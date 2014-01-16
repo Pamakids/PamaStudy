@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:padding="2dp"
+    >
+
+    <ImageView
+        android:id="@+id/img_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/head" />
+
+    <Button
+        android:id="@+id/bu_all_user"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/edit_name"
+        android:layout_toRightOf="@+id/edit_name"
+        android:layout_marginLeft="0dp"
+        
+        android:background="@drawable/name_right" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/img_head"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/edittext_name"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/bu_login"
+        android:text="登 录"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="#ffffffff"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/edit_name"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button_login" />
+
+    <Button
+        android:id="@+id/bu_register"
+        android:text="注 册"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="#ffffffff"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/bu_login"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_login" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_name"
+        android:layout_below="@+id/img_head"
+        android:layout_marginTop="84dp"
+        android:text="用户名:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

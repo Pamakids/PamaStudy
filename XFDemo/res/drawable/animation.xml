@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--   
+    根标签为animation-list，其中oneshot代表着是否只展示一遍，设置为false会不停的循环播放动画  
+    根标签下，通过item标签对动画中的每一个图片进行声明  
+    android:duration 表示展示所用的该图片的时间长度  
+ -->
+<animation-list
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:oneshot="false"
+        >
+    <item android:drawable="@drawable/walk0001" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0002" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0003" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0004" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0005" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0006" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0007" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0008" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0009" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0010" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0011" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0012" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0013" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0014" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0015" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0016" android:duration="40"></item>
+    <item android:drawable="@drawable/walk0017" android:duration="40"></item>
+</animation-list>

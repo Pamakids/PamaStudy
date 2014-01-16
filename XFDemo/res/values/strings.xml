@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">语音+示例</string>
+    <!-- 请替换成在语音云官网申请的appid -->
+    <string name="app_id">appid</string>
+    <string name="example_explain">本Demo为离线语音识别, 第一项表现语音控制行为, 第二项表现自定义单词识别. </string>
+    <string name="text_tts_source">科大讯飞作为中国最大的智能语音技术提供商，在智能语音技术领域有着长期的研究积累，并在中文语音合成、语音识别、口语评测等多项技术上拥有国际领先的成果。科大讯飞是我国唯一以语音技术为产业化方向的“国家863计划成果产业化基地”...
+</string>
+    <string name="text_isr_keyword_hint">\t开始识别前请先点击“上传”按钮上传命令词。\n\t开启识别对话框后，您可以说：\n\t\t阿里山龙胆、浦发银行、邯郸钢铁、齐鲁石化、东北高速、武钢股份、东风汽车、中国国贸、首创股份、上海机场、钢联股份、民生银行、上港集箱、宝钢股份...
+</string>
+    <string name="text_isr_abnf_hint">\t上传内容为：\n\t#ABNF 1.0 gb2312;\n\tlanguage zh-CN;\n\tmode voice;\n\troot $main;\n\t$main = $place1 到$place2 ;\n\t$place1 = 北京 | 武汉 | 南京 | 天津 | 天京 | 东京;\n\t$place2 = 上海 | 合肥;
+</string>
+    <string name="download_confirm_msg">检测到您尚未安装语音组件，是否现在安装？</string>
+    <string name="dialog_confirm_button">确定</string>
+    <string name="dialog_cancel_button">取消</string>
+    <string name="text_iat_begin">请开始说话...</string>
+    <string name="text_iat_uploading">开始上传数据....</string>
+    <string name="text_iat_word">个性化此会 </string>
+    <string name="text_iat_recognizing">音量: </string>
+    <string name="text_iat_loginerror">登录失败 </string>
+    <string name="text_iat_uploadwords">上传词表</string>
+    <string name="text_iat_uploadsuccess">上传成功</string>
+    <string name="text_iat_uploadalready">联系人为空或已上传</string>
+    <string name="text_iat_uploadcontacts">上传联系人</string>
+    <string name="text_iat_downloadsuccess">下载成功 </string>
+    <string name="ok">确 定</string>
+    <string name="cancel">取 消</string>
+    <string name="superman_title">来 吧 !</string>
+    <string name="superman_content">让我把你的应用变的能听会说吧！</string>
+	<string name="res_style">唤醒资源类型</string>
+	<string name="wakeuper_word">唤醒词</string>
+	<string name="res_from_assets">从assets中读取</string>
+	<string name="res_from_client">从客户端读取</string>
+	<string name="res_from_path">从指定路径读取</string>
+    <string-array name="stocks">
+        <item>阿里山龙胆</item>
+        <item>浦发银行</item>
+        <item>邯郸钢铁</item>
+        <item>齐鲁石化</item>
+        <item>东北高速</item>
+        <item>武钢股份</item>
+        <item>东风汽车</item>
+        <item>中国国贸</item>
+        <item>首创股份</item>
+        <item>上海机场</item>
+        <item>钢联股份</item>
+        <item>民生银行</item>
+        <item>上港集箱</item>
+        <item>宝钢股份</item>
+        <item>福建高速</item>
+        <item>歌华有线</item>
+        <item>哈飞股份</item>
+        <item>宁波联合</item>
+        <item>浙江广厦</item>
+        <item>江西纸业</item>
+        <item>黄山旅游</item>
+        <item>万东医疗</item>
+        <item>中技贸易</item>
+        <item>厦新电子</item>
+        <item>龙腾科技</item>
+        <item>古越龙山</item>
+        <item>海信电器</item>
+        <item>中纺投</item>
+        <item>双鹤药业</item>
+        <item>皖维高新</item>
+        <item>南京高科</item>
+        <item>大庆联谊</item>
+        <item>宇通客车</item>
+        <item>福州大通</item>
+        <item>葛洲坝</item>
+        <item>银鸽投资</item>
+        <item>浙江富润</item>
+        <item>凤凰光学</item>
+        <item>江南重工</item>
+        <item>上海梅林</item>
+        <item>南京中达</item>
+        <item>新疆天业</item>
+        <item>青鸟华光</item>
+        <item>国能集团</item>
+        <item>澄星股份</item>
+        <item>人福科技</item>
+        <item>金花股份</item>
+        <item>东风科技</item>
+        <item>津百股份</item>
+        <item>红光</item>
+        <item>新天国际</item>
+        <item>同仁堂</item>
+        <item>多佳股份</item>
+        <item>南京水运</item>
+        <item>中视股份</item>
+        <item>特变电工</item>
+        <item>啤酒花</item>
+        <item>明天科技</item>
+        <item>精密股份</item>
+        <item>禾嘉股份</item>
+        <item>华源股份</item>
+        <item>哈高科</item>
+        <item>云天化</item>
+        <item>恒泰</item>
+        <item>广州控股</item>
+        <item>林海股份</item>
+        <item>清华同方</item>
+        <item>明星电力</item>
+        <item>莱钢股份</item>
+        <item>青山纸业</item>
+        <item>上海汽车</item>
+        <item>永鼎光缆</item>
+        <item>重庆路桥</item>
+        <item>美尔雅</item>
+        <item>亚盛集团</item>
+        <item>成百</item>
+        <item>长春热缩</item>
+        <item>稀土高科</item>
+        <item>长征电器</item>
+        <item>浙江东日</item>
+        <item>东方航空</item>
+        <item>三峡水利</item>
+        <item>西宁特钢</item>
+        <item>中国泛旅</item>
+        <item>长江投资</item>
+        <item>浙江东方</item>
+        <item>郑州煤电</item>
+        <item>宏图高科</item>
+        <item>兰花科创</item>
+        <item>铁龙股份</item>
+        <item>杭钢股份</item>
+        <item>金健米业</item>
+        <item>江苏工艺</item>
+        <item>太极集团</item>
+        <item>波导股份</item>
+        <item>岷江水电</item>
+        <item>重庆啤酒</item>
+        <item>东湖高新</item>
+        <item>乐凯胶片</item>
+        <item>道博股份</item>
+        <item>长江包装</item>
+        <item>青旅控股</item>
+        <item>鼎天科技</item>
+        <item>兴发集团</item>
+        <item>四维瓷业</item>
+        <item>大元股份</item>
+        <item>离合器</item>
+        <item>邢台轧辊</item>
+        <item>重机</item>
+        <item>航天机电</item>
+        <item>维科精华</item>
+        <item>厦门建发</item>
+        <item>宝硕股份</item>
+        <item>益鑫泰</item>
+        <item>鲁润股份</item>
+        <item>中体产业</item>
+        <item>宁城老窖</item>
+        <item>巨化股份</item>
+        <item>天坛生物</item>
+        <item>山东临工</item>
+        <item>福建南纸</item>
+        <item>宁夏恒力</item>
+        <item>福田股份</item>
+        <item>黎明股份</item>
+        <item>武汉控股</item>
+        <item>太原重工</item>
+        <item>上海建工</item>
+        <item>上海贝岭</item>
+        <item>黄河旋风</item>
+        <item>牡丹江</item>
+        <item>宝华实业</item>
+        <item>中国化建</item>
+        <item>雅戈尔</item>
+        <item>东安动力</item>
+        <item>黑化股份</item>
+        <item>九发股份</item>
+        <item>云大科技</item>
+        <item>桦林轮胎</item>
+        <item>生益科技</item>
+        <item>海星科技</item>
+        <item>莲花味精</item>
+        <item>黑龙股份</item>
+        <item>兖州煤业</item>
+        <item>吉林森工</item>
+        <item>锦州港</item>
+        <item>华资实业</item>
+        <item>长城电工</item>
+        <item>创兴科技</item>
+        <item>中牧股份</item>
+        <item>复星实业</item>
+        <item>伊力特</item>
+        <item>大唐电信</item>
+        <item>金牛实业</item>
+        <item>江苏吴中</item>
+        <item>金宇集团</item>
+        <item>哈空调</item>
+        <item>福日股份</item>
+        <item>山东铝业</item>
+        <item>有研硅股</item>
+        <item>安彩高科</item>
+        <item>戴梦得</item>
+        <item>罗顿发</item>
+        <item>紫江企</item>
+        <item>西藏药业</item>
+        <item>江泉实业</item>
+        <item>亚星客车</item>
+        <item>长春经开</item>
+        <item>浙江医药</item>
+        <item>秦岭水泥</item>
+        <item>全柴动力</item>
+        <item>南山实业</item>
+        <item>江苏阳光</item>
+        <item>海南航空</item>
+        <item>众生制药</item>
+        <item>万杰高科</item>
+        <item>深南玻</item>
+        <item>深石化</item>
+        <item>深华源</item>
+        <item>中浩</item>
+        <item>深康佳</item>
+        <item>中华</item>
+        <item>深中冠</item>
+        <item>深深宝</item>
+        <item>深华发</item>
+        <item>深科技</item>
+        <item>深赤湾</item>
+        <item>深天地</item>
+        <item>招商局</item>
+        <item>特力</item>
+        <item>飞亚达</item>
+        <item>深能源</item>
+        <item>深益力</item>
+        <item>深深房</item>
+        <item>英达</item>
+        <item>深宝恒</item>
+        <item>深桑达</item>
+        <item>新都酒店</item>
+        <item>深信泰丰</item>
+        <item>中科健</item>
+        <item>华联控股</item>
+        <item>深南电</item>
+    </string-array>
+
+    <string name="title_activity_wakeuper_demo">WakeuperDemo</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

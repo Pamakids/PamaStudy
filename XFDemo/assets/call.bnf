@@ -1,0 +1,5 @@
+﻿#BNF+IAT 1.0 UTF-8;
+!grammar call;
+!slot <move>;
+!start <move>;
+<move>:go|stop;

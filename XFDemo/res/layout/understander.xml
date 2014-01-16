@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:gravity="center_horizontal"
+	android:padding="10dip">
+	<include layout="@layout/title"/>
+	<EditText android:id="@+id/understander_text" 
+		android:layout_width="fill_parent"
+		android:layout_height="0dip" 
+		android:gravity="top|left"
+		android:textSize="20sp" 
+		android:layout_weight="1"
+		android:paddingBottom="40dip"/>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:orientation="horizontal"
+		android:layout_margin="10dip"
+		android:layout_marginBottom="2dip"
+		android:gravity="center_horizontal">
+		<Button android:id="@+id/text_understander"
+			android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="文本理解" 
+			android:textSize="20sp"/>
+		<Button android:id="@+id/start_understander"
+			android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:text="启动语义"
+			android:layout_weight="1" 
+			android:textSize="20sp" />	
+	</LinearLayout>
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:orientation="horizontal"
+		android:layout_marginRight="10dip"
+		android:layout_marginLeft="10dip"
+		android:layout_marginTop="2dip"
+		android:layout_marginBottom="2dip"
+		android:gravity="center_horizontal">
+		<Button android:id="@+id/understander_stop"
+			android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:layout_weight="1" 
+			android:text="停止录音" 
+			android:textSize="20sp"/>
+		<Button android:id="@+id/understander_cancel"
+			android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:text="取消" 
+			android:layout_weight="1" 
+			android:textSize="20sp" />	
+	</LinearLayout>
+</LinearLayout>

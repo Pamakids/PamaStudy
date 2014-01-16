@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:gravity="center_horizontal"
+	android:padding="10dip">
+	<include layout="@layout/title"/>
+
+	<!--<EditText-->
+	    <!--android:id="@+id/isr_result_text"-->
+	    <!--android:layout_width="fill_parent"-->
+	    <!--android:layout_height="0dip"-->
+	    <!--android:layout_weight="1"-->
+	    <!--android:gravity="top|left"-->
+	    <!--android:paddingBottom="40dip"-->
+	    <!--android:textSize="20sp"-->
+	    <!--android:scrollbars="vertical"/>-->
+
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_margin="10dip"
+		android:layout_marginBottom="2dip"
+		android:gravity="center_horizontal">
+        <TextView  android:layout_width="0dip"
+                   android:layout_height="wrap_content"
+                   android:layout_weight=".6"
+                   android:text="输入单词"
+                />
+        <EditText
+                android:id="@+id/isr_slot_input"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="top|left"
+                android:paddingBottom="20dip"
+                android:textSize="20sp"
+                android:scrollbars="vertical" />
+		<Button android:id="@+id/isr_lexcion"
+			android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:text="添加"
+			android:layout_weight="1"
+			android:textSize="20sp" />
+	</LinearLayout>
+
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_margin="10dip"
+		android:layout_marginBottom="2dip"
+		android:gravity="center_horizontal">
+		<Button android:id="@+id/isr_recognize"
+			android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:text="开始识别"
+			android:layout_weight="1"
+			android:textSize="20sp" />
+	</LinearLayout>
+
+    <TextView android:id="@+id/outputText2"
+              android:paddingTop="30px"
+              android:paddingLeft="18px"
+              android:paddingRight="18px"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textColor="#66ccff"
+              android:textSize="26sp"
+              android:text="未识别"/>
+
+</LinearLayout>

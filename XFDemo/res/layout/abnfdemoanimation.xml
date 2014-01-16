@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:gravity="center_horizontal"
+	android:padding="10dip">
+	<include layout="@layout/title"/>
+
+    <ImageView android:id="@+id/animationIV"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:padding="5px"
+               android:src="@drawable/animation"/>
+
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_margin="10dip"
+		android:layout_marginBottom="2dip"
+		android:gravity="center_horizontal">
+		<Button android:id="@+id/isr_animation"
+			android:layout_width="0dip"
+			android:layout_height="wrap_content"
+			android:text="开始识别"
+			android:layout_weight="1"
+			android:textSize="20sp" />
+	</LinearLayout>
+
+    <TextView android:id="@+id/outputText"
+              android:paddingTop="30px"
+              android:paddingLeft="18px"
+              android:paddingRight="18px"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textColor="#66ccff"
+              android:textSize="26sp"
+              android:text="未识别"/>
+</LinearLayout>
