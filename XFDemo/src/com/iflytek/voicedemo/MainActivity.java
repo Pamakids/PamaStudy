@@ -48,6 +48,11 @@ public class MainActivity extends Activity implements OnClickListener{
 		{
 			intent = new Intent(this, AbnfDemo.class);
 		}
+        else if(tag == 2)
+        {
+            intent = new Intent(this, AbnfDemoVoice.class);
+        }
+
 		startActivity(intent);		
 	}
 	
@@ -75,12 +80,16 @@ public class MainActivity extends Activity implements OnClickListener{
 	   		  {
 	   			btn.setText("自定义单词识别");
 	   		  }
+              else if(position == 2)
+              {
+                  btn.setText("GoodBye&&How 语音识别");
+              }
 	   		  return convertView;
 	   	  }
 
 	   	@Override
 		public int getCount() {
-  	  		return 2;
+  	  		return 3;
 		}
   	  	
   	  	@Override

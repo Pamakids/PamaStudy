@@ -1,13 +1,12 @@
 package com.iflytek.speech.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 public class XmlParser {
 
@@ -31,26 +30,28 @@ public class XmlParser {
 			Element root = (Element) domDoc.getDocumentElement();
 			
 			Element raw = (Element)root.getElementsByTagName("rawtext").item(0);
-			buffer.append("【识别结果】" + raw.getFirstChild().getNodeValue());
-			buffer.append("\n");
-			
-			Element e = (Element)root.getElementsByTagName("result").item(0);
-			
-			Element focus = (Element)e.getElementsByTagName("focus").item(0);
-			buffer.append("【FOCUS】" + focus.getFirstChild().getNodeValue());
-			buffer.append("\n");
-			
-			Element action = (Element)e.getElementsByTagName("action").item(0);
-			Element operation = (Element)action.getElementsByTagName("operation").item(0);
-			buffer.append("【ACTION】" + operation.getFirstChild().getNodeValue());
-			buffer.append("\n");
-			
+            buffer.append(raw.getFirstChild().getNodeValue());
+
+//			buffer.append("【识别结果】" + raw.getFirstChild().getNodeValue());
+//			buffer.append("\n");
+//
+//			Element e = (Element)root.getElementsByTagName("result").item(0);
+//
+//			Element focus = (Element)e.getElementsByTagName("focus").item(0);
+//			buffer.append("【FOCUS】" + focus.getFirstChild().getNodeValue());
+//			buffer.append("\n");
+//
+//			Element action = (Element)e.getElementsByTagName("action").item(0);
+//			Element operation = (Element)action.getElementsByTagName("operation").item(0);
+//			buffer.append("【ACTION】" + operation.getFirstChild().getNodeValue());
+//			buffer.append("\n");
+
 
 		}catch(Exception e){
 			e.printStackTrace();
 		};
-		buffer.append("\n");
-		buffer.append("【ALL】" + xml);
+//		buffer.append("\n");
+//		buffer.append("【ALL】" + xml);
 		return buffer.toString();
 	}
 }

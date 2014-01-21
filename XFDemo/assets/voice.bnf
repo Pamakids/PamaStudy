@@ -1,0 +1,5 @@
+﻿#BNF+IAT 1.0 UTF-8;
+!grammar voice;
+!slot <chat>;
+!start <chat>;
+<chat>:;

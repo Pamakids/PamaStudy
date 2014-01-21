@@ -2,4 +2,4 @@
 !grammar call;
 !slot <move>;
 !start <move>;
-<move>:go|stop;
+<move>:"go"|"stop";

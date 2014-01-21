@@ -93,7 +93,7 @@ public class TtsDemo extends Activity implements OnClickListener{
 				// 设置参数
 //				mTts.setParameter(SpeechSynthesizer.VOICE_NAME, "vixk");
 				mTts.setParameter(SpeechSynthesizer.SPEED, "50");
-				mTts.setParameter(SpeechSynthesizer.PITCH, "50");
+				mTts.setParameter(SpeechSynthesizer.PITCH, "100");
 				int code = mTts.startSpeaking(text, mTtsListener);
 				if(code != 0)
 				{

@@ -126,7 +126,7 @@ public class AbnfDemo extends Activity implements OnClickListener{
     private String slotString="";
 
     private String getInput(){
-        String reslut = ((EditText)findViewById(R.id.isr_slot_input)).getText().toString();
+        String reslut = ((EditText)findViewById(R.id.isr_slot_input)).getText().toString().toLowerCase();
         ((EditText)findViewById(R.id.isr_slot_input)).setText("");
         if(slotString.length()==0)
             slotString+=reslut;
@@ -142,7 +142,7 @@ public class AbnfDemo extends Activity implements OnClickListener{
 			case R.id.isr_lexcion:
                 initRecgnizer();
 				mRecognizer.setParameter(SpeechConstant.ENGINE_TYPE, "local");
-					mRecognizer.setParameter(SpeechRecognizer.GRAMMAR_LIST, "call");
+				mRecognizer.setParameter(SpeechRecognizer.GRAMMAR_LIST, "call");
                 String slot = new String();
 //                slot = getSlots(slotArr);
                 slot = getInput();
