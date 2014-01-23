@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aispeech.sample"
+    android:installLocation="preferExternal" >
+
+    <uses-sdk
+        android:minSdkVersion="8" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="AISpeech_sdk_samples" >
+        <activity
+            android:name=".CloudASR"
+            android:label="云端识别Sample" >
+        </activity>
+        <activity
+            android:name=".CloudTTS"
+            android:label="云端合成Sample" >
+        </activity>
+        <activity
+            android:name=".CloudASRUI"
+            android:label="云端识别-弹出框UI" >
+        </activity>
+        <activity
+            android:name=".CloudASRMultiResult"
+            android:label="云端识别-实时结果" >
+        </activity>
+        <activity
+            android:name=".LocalASRService"
+            android:label="(通过服务)本地识别" >
+        </activity>
+        <activity
+            android:name=".LocalWakeUpService"
+            android:label="(通过服务)本地唤醒" >
+        </activity>
+        <activity
+            android:name=".LocalTTSService"
+            android:label="(服务)本地合成" >
+        </activity>
+        <activity
+            android:name=".Main"
+            android:launchMode="singleInstance" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

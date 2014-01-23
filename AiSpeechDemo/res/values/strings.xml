@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">sdk_samples</string>
+
+    <string-array name="tts_cn_res">
+        <item>syn_chnsnt_zhilingf</item>
+        <item>syn_chnsnt_anonyf</item>
+        <item>syn_chnsnt_anonyg</item>
+    </string-array>
+    <string-array name="tts_en_res">
+        <item>syn_chnsnt_anonyf</item>
+    </string-array>
+
+    <string name="res_res">合成资源类型(语速、性别)</string>
+
+    <string-array name="tts_type">
+        <item>cn.sent.syn</item>
+        <item>en.syn</item>
+    </string-array>
+
+    <string name="res_type">合成类型(中文或英文)</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>
