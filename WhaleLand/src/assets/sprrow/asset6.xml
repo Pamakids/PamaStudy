@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:92db969c9ba557457a7321e7d5da9b44$ -->
+<TextureAtlas imagePath="asset6.png">
+    <SubTexture name="flash0001" x="1295" y="616" width="116" height="120" frameX="-15" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0002" x="311" y="1863" width="108" height="120" frameX="-31" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0003" x="1899" y="468" width="120" height="120" frameX="-31" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0004" x="1762" y="456" width="136" height="120" frameX="-29" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0005" x="154" y="1863" width="156" height="120" frameX="-24" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0006" x="1655" y="698" width="176" height="120" frameX="-21" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0007" x="1685" y="577" width="198" height="120" frameX="-18" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0008" x="1430" y="606" width="224" height="120" frameX="-13" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0009" x="1430" y="485" width="254" height="120" frameX="-9" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0010" x="1026" y="479" width="286" height="120" frameX="-4" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0011" x="1103" y="358" width="324" height="120" frameX="0" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0012" x="1475" y="122" width="362" height="120" frameX="0" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0013" x="1511" y="1" width="400" height="120"/>
+    <SubTexture name="flash0014" x="1110" y="1" width="400" height="120"/>
+    <SubTexture name="flash0015" x="1110" y="122" width="364" height="120" frameX="-36" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0016" x="1457" y="364" width="304" height="120" frameX="-31" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0017" x="1469" y="243" width="340" height="120" frameX="-26" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0018" x="1110" y="243" width="358" height="114" frameX="-42" frameY="-6" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0019" x="1026" y="600" width="268" height="84" frameX="-132" frameY="-36" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0020" x="2033" y="1" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="flash0021" x="2033" y="1" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="120"/>
+    <SubTexture name="huanzhuangui" x="1" y="1094" width="1024" height="768"/>
+    <SubTexture name="ice_night" x="1" y="1" width="1108" height="323"/>
+    <SubTexture name="wlistback" x="1" y="325" width="1024" height="768"/>
+    <SubTexture name="yanhua0003" x="1428" y="358" width="28" height="36" frameX="-142" frameY="-88" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0005" x="1838" y="199" width="48" height="52" frameX="-135" frameY="-79" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0007" x="1838" y="122" width="64" height="76" frameX="-128" frameY="-68" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0009" x="1026" y="325" width="76" height="84" frameX="-121" frameY="-63" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0010" x="1810" y="357" width="76" height="98" frameX="-120" frameY="-56" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0011" x="1810" y="252" width="92" height="104" frameX="-114" frameY="-53" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0013" x="420" y="1863" width="100" height="118" frameX="-111" frameY="-45" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0015" x="1313" y="479" width="116" height="136" frameX="-104" frameY="-39" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0017" x="1912" y="1" width="120" height="144" frameX="-100" frameY="-36" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0019" x="1903" y="313" width="136" height="154" frameX="-95" frameY="-31" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0021" x="1903" y="146" width="140" height="166" frameX="-90" frameY="-24" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0023" x="1" y="1863" width="152" height="182" frameX="-87" frameY="-20" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0025" x="1706" y="1644" width="154" height="186" frameX="-85" frameY="-16" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0027" x="1533" y="1671" width="160" height="196" frameX="-83" frameY="-14" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0029" x="1884" y="589" width="160" height="198" frameX="-83" frameY="-12" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0031" x="1881" y="1220" width="166" height="212" frameX="-79" frameY="-9" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0033" x="1197" y="1167" width="170" height="212" frameX="-79" frameY="-8" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0035" x="1368" y="1157" width="170" height="212" frameX="-79" frameY="-8" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0037" x="1832" y="788" width="172" height="218" frameX="-79" frameY="-8" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0039" x="1412" y="727" width="172" height="216" frameX="-79" frameY="-9" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0041" x="1199" y="737" width="170" height="216" frameX="-81" frameY="-9" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0043" x="1026" y="685" width="172" height="214" frameX="-81" frameY="-10" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0045" x="1585" y="819" width="172" height="214" frameX="-81" frameY="-10" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0047" x="1026" y="900" width="170" height="214" frameX="-82" frameY="-10" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0049" x="1541" y="1034" width="170" height="212" frameX="-82" frameY="-12" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0051" x="1758" y="1007" width="170" height="212" frameX="-81" frameY="-12" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0053" x="1026" y="1115" width="170" height="212" frameX="-81" frameY="-12" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0055" x="1197" y="954" width="170" height="212" frameX="-81" frameY="-12" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0057" x="1370" y="944" width="170" height="212" frameX="-81" frameY="-13" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0059" x="1539" y="1247" width="168" height="212" frameX="-82" frameY="-13" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0061" x="1712" y="1220" width="168" height="212" frameX="-82" frameY="-13" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0063" x="1364" y="1581" width="168" height="210" frameX="-82" frameY="-15" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0065" x="1026" y="1328" width="168" height="212" frameX="-82" frameY="-14" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0067" x="1877" y="1433" width="168" height="210" frameX="-82" frameY="-16" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0069" x="1537" y="1460" width="168" height="210" frameX="-82" frameY="-16" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0071" x="1708" y="1433" width="168" height="210" frameX="-82" frameY="-17" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0073" x="1026" y="1752" width="168" height="210" frameX="-82" frameY="-17" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0075" x="1026" y="1541" width="168" height="210" frameX="-82" frameY="-18" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0077" x="1195" y="1380" width="168" height="210" frameX="-82" frameY="-18" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0079" x="1368" y="1370" width="168" height="210" frameX="-82" frameY="-19" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0081" x="1364" y="1792" width="168" height="206" frameX="-82" frameY="-19" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0083" x="1195" y="1798" width="168" height="206" frameX="-82" frameY="-20" frameWidth="320" frameHeight="240"/>
+    <SubTexture name="yanhua0085" x="1195" y="1591" width="168" height="206" frameX="-82" frameY="-21" frameWidth="320" frameHeight="240"/>
+</TextureAtlas>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:9a565bbc0355fd8731f6bea63e2ee9f4$ -->
+<TextureAtlas imagePath="asset4.png">
+    <SubTexture name="email" x="1" y="1" width="942" height="662" frameX="-33" frameY="-49" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="hbg" x="944" y="1" width="646" height="438"/>
+    <SubTexture name="help_arrow1" x="1965" y="337" width="42" height="23"/>
+    <SubTexture name="help_arrow2" x="2008" y="1" width="38" height="32"/>
+    <SubTexture name="help_arrow3" x="2008" y="34" width="35" height="33"/>
+    <SubTexture name="hmic" x="1850" y="649" width="193" height="89"/>
+    <SubTexture name="huanzhuangui2" x="944" y="440" width="495" height="455"/>
+    <SubTexture name="ipad" x="1591" y="337" width="373" height="311"/>
+    <SubTexture name="mouth_help" x="585" y="664" width="269" height="196"/>
+    <SubTexture name="snowball" x="1" y="1444" width="289" height="282"/>
+    <SubTexture name="snowman001" x="1591" y="1" width="416" height="335" frameX="0" frameY="-236" frameWidth="416" frameHeight="571"/>
+    <SubTexture name="snowman002" x="1" y="1727" width="232" height="243" frameX="-143" frameY="-73" frameWidth="416" frameHeight="571"/>
+    <SubTexture name="xunzhang01" x="562" y="1686" width="164" height="208"/>
+    <SubTexture name="xunzhang02" x="562" y="1477" width="164" height="208"/>
+    <SubTexture name="xunzhang03" x="456" y="1268" width="164" height="208"/>
+    <SubTexture name="xunzhang04" x="397" y="1783" width="164" height="208"/>
+    <SubTexture name="xunzhang05" x="397" y="1574" width="164" height="208"/>
+    <SubTexture name="xunzhang06" x="750" y="861" width="164" height="208"/>
+    <SubTexture name="xunzhang07" x="585" y="861" width="164" height="208"/>
+    <SubTexture name="xunzhang08" x="291" y="1365" width="164" height="208"/>
+    <SubTexture name="xunzhang09" x="420" y="1059" width="164" height="208"/>
+    <SubTexture name="xunzhang10" x="301" y="664" width="164" height="208"/>
+    <SubTexture name="xunzhang11" x="255" y="1059" width="164" height="208"/>
+    <SubTexture name="zhuangbanlian001" x="255" y="1268" width="165" height="96" frameX="0" frameY="-3" frameWidth="165" frameHeight="108"/>
+    <SubTexture name="zhuangbanlian002" x="1440" y="616" width="101" height="84" frameX="-14" frameY="0" frameWidth="165" frameHeight="108"/>
+    <SubTexture name="zhuangbanlian003" x="301" y="896" width="163" height="106" frameX="0" frameY="-2" frameWidth="165" frameHeight="108"/>
+    <SubTexture name="zhuangbanshou001" x="234" y="1727" width="162" height="235" frameX="-34" frameY="-110" frameWidth="196" frameHeight="359"/>
+    <SubTexture name="zhuangbanshou002" x="1850" y="739" width="172" height="319" frameX="0" frameY="0" frameWidth="196" frameHeight="359"/>
+    <SubTexture name="zhuangbanshou003" x="1440" y="440" width="126" height="175" frameX="-58" frameY="-184" frameWidth="196" frameHeight="359"/>
+    <SubTexture name="zhuangbantou001" x="1" y="664" width="299" height="370" frameX="0" frameY="-36" frameWidth="307" frameHeight="406"/>
+    <SubTexture name="zhuangbantou002" x="1" y="1059" width="253" height="384" frameX="-33" frameY="0" frameWidth="307" frameHeight="406"/>
+    <SubTexture name="zhuangbantou003" x="1542" y="649" width="307" height="370" frameX="0" frameY="-36" frameWidth="307" frameHeight="406"/>
+</TextureAtlas>
