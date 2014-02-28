@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   width="800" height="600" frameRate="24"
+					   creationComplete="windowedapplication2_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.serialization.json.JSON;
+			import com.genesi.desktop.ScreenShooter;
+			import com.pamakids.PamaRecord;
+			import com.pamakids.ScreenshotOnMac;
+			import com.pamakids.UploadUtils;
+			import com.pamakids.manager.FileManager;
+
+			import flash.display.BitmapData;
+			import flash.display.JPEGEncoderOptions;
+
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			import mx.graphics.codec.JPEGEncoder;
+
+			import org.bytearray.micrecorder.MicRecorder;
+			import org.bytearray.micrecorder.encoder.WaveEncoder;
+			import org.bytearray.micrecorder.events.RecordingEvent;
+
+			private var json:Object;
+			private var timer:Timer;
+			private var s:ScreenShooter;
+
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				unameTI.editable=false;
+				setCurrentState("registed");
+				initConfig();
+				currentUserName=unameTI.text;
+				UploadUtils.username=currentUserName;
+				initCamera();
+			}
+
+			private function initConfig():void
+			{
+				json={"username":unameTI.text,"records":[]};
+				FileManager.saveFile("config.json",com.adobe.serialization.json.JSON.encode(json));
+				UploadUtils.uploadConfig("config.json");
+				recordsArr=[];
+			}
+
+			private var recordsArr:Array;
+			private var crtRecord:PamaRecord;
+
+			protected function windowedapplication2_creationCompleteHandler(event:FlexEvent):void
+			{
+				var file:File=File.applicationStorageDirectory.resolvePath("config.json");
+				if(!file.exists){
+					setCurrentState("unRegisted");
+				}else{
+					var fs:FileStream=new FileStream();
+					fs.open(file,FileMode.READ);
+					var str:String=fs.readUTF();
+					fs.close();
+
+					json=com.adobe.serialization.json.JSON.decode(str);
+
+					if(!json)
+						setCurrentState("unRegisted");
+					else
+					{
+						setCurrentState("registed");
+						currentUserName=json["username"];
+						UploadUtils.username=currentUserName;
+						recordsArr=json["records"];
+						initCamera();
+						recordsAC=new ArrayCollection(recordsArr);
+					}
+				}
+			}
+
+			private function initCamera():void{
+				var camera:Camera=Camera.getCamera();
+				if(camera){
+					camera.setMode(320,240,24);
+					var video:Video=new Video(320,240);
+					video.attachCamera(camera);
+					cameraZone.addChild(video);
+				}
+
+				recorder=new MicRecorder( new WaveEncoder())
+				recorder.addEventListener(RecordingEvent.RECORDING, onRecording);
+				recorder.addEventListener(Event.COMPLETE, onRecordComplete);
+			}
+
+			private function onRecording(event:RecordingEvent):void
+			{
+				statusLabel.text = "录制中...";
+				trace(Microphone.getMicrophone().activityLevel)
+			}
+
+			private function onRecordComplete(event:Event):void
+			{
+				statusLabel.text = "录制完成...";
+				var wavName:String=new Date().getTime()+"mic.wav";
+				FileManager.saveFile(savePath+wavName,recorder.output);
+
+				crtRecord.mic=wavName;
+
+				recordsArr.push(crtRecord);
+				recordsAC=new ArrayCollection(recordsArr);
+
+				json["records"]=recordsArr;
+				var lastJsonName:String="config"+new Date().getTime()+".json";
+				FileManager.saveFile("config.json",com.adobe.serialization.json.JSON.encode(json));
+				UploadUtils.uploadConfig("config.json");
+
+				startBtn.mouseEnabled=true;
+				endBtn.mouseEnabled=false;
+				uploadBtn.mouseEnabled=true;
+			}
+
+			[Bindable]
+			private var currentUserName:String="";
+
+			[Bindable]
+			private var currentItemIndex:int;
+
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				crtRecord=null;
+				crtRecord=new PamaRecord();
+				if(!timer){
+					timer=new Timer(500);
+					timer.addEventListener(TimerEvent.TIMER,onTimer);
+				}
+				var date:Date=new Date();
+				savePath=df.format(date);
+				crtRecord.path=savePath;
+
+				timer.start();
+				startBtn.mouseEnabled=false;
+				endBtn.mouseEnabled=true;
+				uploadBtn.mouseEnabled=false;
+				recorder.record();
+				statusLabel.text = "录制中...";
+			}
+
+			protected function button3_clickHandler(event:MouseEvent):void
+			{
+				timer.stop();
+				recorder.stop();
+			}
+
+			protected function onTimer(event:TimerEvent):void
+			{
+				var isWindows:Boolean=Capabilities.os.toLowerCase().indexOf("windows")>=0;
+				if(isWindows)
+				{
+					if(!s)
+						s = new ScreenShooter();
+					var ba:ByteArray = s.getScreenShot();
+
+					var dateStr:String=new Date().getTime().toString();
+					FileManager.saveFile(savePath+dateStr+".jpg",ba);
+				}
+				else
+				{
+					var f:File = File.applicationStorageDirectory.resolvePath(savePath);
+					if(!f.exists)
+						f.createDirectory();
+					if(!appleS)
+						appleS = new ScreenshotOnMac();
+					appleS.start(File.applicationStorageDirectory.resolvePath(savePath+dateStr+".jpg").nativePath);
+				}
+
+				crtRecord.shots.push(dateStr+".jpg");
+
+				var bp:BitmapData=new BitmapData(320,240);
+				bp.drawWithQuality(cameraZone,null,null,null,null,false,StageQuality.MEDIUM);
+
+				var bpBA:ByteArray=new ByteArray();
+				bp.encode(bp.rect, new JPEGEncoderOptions(), bpBA);
+
+				FileManager.saveFile(savePath+dateStr+"cam.jpg",bpBA);
+
+				crtRecord.cameras.push(dateStr+"cam.jpg");
+			}
+
+			private var savePath:String;
+			private var recorder:MicRecorder;
+			private var appleS:ScreenshotOnMac;
+
+			protected function uploadBtn_clickHandler(event:MouseEvent):void
+			{
+				uploadBtn.mouseEnabled=false;
+				controlArea.mouseChildren=controlArea.mouseEnabled=false;
+				var obj:Object=recordsArr[itemList.selectedIndex];
+				if(obj)
+				{
+					if(UploadUtils.checkUploaded(obj)=="上传已完成"){
+						uploadBtn.mouseEnabled=true;
+						controlArea.mouseChildren=controlArea.mouseEnabled=false;
+					}
+					else{
+						var upload:UploadUtils=new UploadUtils();
+						upload.index=itemList.selectedIndex;
+						upload.addEventListener(UploadUtils.UPLOAD_FAILED,onUploadFail);
+						upload.addEventListener(UploadUtils.UPLOAD_SUCCESS,onUploadSuccess);
+						upload.uploadRecords(obj);
+					}
+				}else{
+					uploadBtn.mouseEnabled=true;
+					controlArea.mouseChildren=controlArea.mouseEnabled=false;
+				}
+			}
+
+			[Bindable]
+			private var recordsAC:ArrayCollection;
+
+			protected function onUploadFail(event:Event):void
+			{
+
+			}
+
+			protected function onUploadSuccess(event:Event):void
+			{
+				var upload:UploadUtils=event.currentTarget as UploadUtils;
+				if(upload.totalUpfile==0){
+					uploadBtn.mouseEnabled=true;
+					controlArea.mouseChildren=controlArea.mouseEnabled=true;
+				}else{
+					uploadBtn.mouseEnabled=false;
+					controlArea.mouseChildren=controlArea.mouseEnabled=false;
+				}
+				recordsAC=new ArrayCollection(recordsArr);
+			}
+
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:DateTimeFormatter id="df" dateTimePattern="yyyy/MM/dd/"/>
+	</fx:Declarations>
+
+	<s:states>
+		<s:State name="unRegisted"/>
+		<s:State name="registed"/>
+	</s:states>
+
+	<s:VGroup includeIn="unRegisted" verticalCenter="0" horizontalCenter="0" gap="30">
+		<s:Label text="请输入用户名" fontSize="18" color="0xff3333"/>
+		<s:TextInput id="unameTI" maxChars="16" width="250" height="30" fontSize="20"/>
+		<s:Button label="确定" click="button1_clickHandler(event)" mouseEnabled="{unameTI.text}" horizontalCenter="0"/>
+	</s:VGroup>
+
+	<s:VGroup includeIn="registed" left="20" top="50" right="20" bottom="20" gap="50">
+		<s:HGroup width="100%" horizontalAlign="center">
+			<s:Label text="用户名:   " fontSize="18" color="0xff3333" verticalCenter="0"/>
+			<s:Label text="{currentUserName}" fontSize="24" verticalCenter="0"/>
+		</s:HGroup>
+
+		<s:HGroup width="100%" height="450" gap="50">
+			<s:VGroup width="50%" height="100%" id="dataArea">
+				<s:List id="itemList" width="100%" height="80%"
+						dataProvider="{recordsAC}">
+					<s:itemRenderer>
+						<fx:Component>
+							<s:ItemRenderer>
+								<fx:Script>
+									<![CDATA[
+										import com.pamakids.UploadUtils;
+										override public function set data(value:Object):void{
+											fileName.text=value["path"];
+											progress.text=UploadUtils.checkUploaded(value);
+										}
+									]]>
+								</fx:Script>
+								<s:Label id="fileName" x="0"  fontSize="18"/>
+								<s:Label id="progress" x="180"  fontSize="18"/>
+							</s:ItemRenderer>
+						</fx:Component>
+					</s:itemRenderer>
+				</s:List>
+				<s:HGroup width="100%">
+					<s:VGroup width="50%">
+						<s:Button label="上传" id="uploadBtn"
+								  click="uploadBtn_clickHandler(event)"/>
+						<!--<s:Button label="回放"/>-->
+					</s:VGroup>
+				</s:HGroup>
+			</s:VGroup>
+			<s:VGroup width="50%" height="100%" id="controlArea">
+				<s:BorderContainer width="100%" height="50%" borderColor="0x66ccff">
+					<s:Button label="开始" top="10" horizontalCenter="0" id="startBtn"
+							  click="button2_clickHandler(event)"/> 
+					<s:Button label="结束" horizontalCenter="0" verticalCenter="0" id="endBtn" 
+							  click="button3_clickHandler(event)" mouseEnabled="false"/>
+					<s:Label id="statusLabel" horizontalCenter="0" bottom="0"/>
+				</s:BorderContainer>
+				<mx:UIComponent id="cameraZone" width="320" height="240" bottom="0" 
+								horizontalCenter="0" verticalCenter="0"/>
+			</s:VGroup>
+		</s:HGroup>
+
+	</s:VGroup>
+
+</s:WindowedApplication>

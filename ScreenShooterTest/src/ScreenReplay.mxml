@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" 
+					   width="800" height="600"
+					   creationComplete="windowedapplication1_creationCompleteHandler(event)">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.serialization.json.JSON;
+			import com.pamakids.manager.LoadManager;
+
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+
+			[Bindable]
+			private var recordsAC:ArrayCollection;
+
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				statusLabel.text="配置加载中";
+				LoadManager.instance.loadText("http://sb.pamakids.com:9050/ut/get?u="+nameInput.text,configUrlLoaded);
+			}
+
+			protected function windowedapplication1_creationCompleteHandler(event:FlexEvent):void
+			{
+			}
+
+			private function configUrlLoaded(str:String):void{
+				trace(str);
+				var o:Object=com.adobe.serialization.json.JSON.decode(str);
+				var configPath:String=o["result"];
+				if(configPath.indexOf("json")==-1){
+					statusLabel.text="配置加载失败::"+configPath;
+				}else
+					LoadManager.instance.loadText("http://usertest.qiniudn.com/"+nameInput.text+"/"+configPath,
+						configLoaded);
+			}
+
+			private function configLoaded(str:String):void{
+
+				str=str.substr(str.indexOf("{"));
+				var json:Object=com.adobe.serialization.json.JSON.decode(str);
+				if(json){
+					recordsAC=new ArrayCollection(json["records"]);
+					statusLabel.text="配置已加载";
+				}else{
+					statusLabel.text="配置错误";
+				}
+			}
+		]]>
+	</fx:Script>
+
+	<s:HGroup verticalCenter="0" horizontalCenter="0" gap="30" width="90%" height="90%">
+		<s:VGroup verticalCenter="0">
+			<s:Label text="输入用户名"/>			
+			<s:TextInput id="nameInput"/>
+			<s:Button click="button1_clickHandler(event)" label="确定" 
+					  mouseEnabled="{nameInput.text}"/>
+			<s:Label id="statusLabel"/>
+		</s:VGroup>
+		<s:VGroup width="50%" height="100%" id="dataArea">
+			<s:List id="itemList" width="100%" height="80%"
+					dataProvider="{recordsAC}">
+				<s:itemRenderer>
+					<fx:Component>
+						<s:ItemRenderer>
+							<fx:Script>
+								<![CDATA[
+									import com.pamakids.UploadUtils;
+									override public function set data(value:Object):void{
+										fileName.text=value["path"];
+										progress.text=UploadUtils.checkUploaded(value);
+									}
+								]]>
+							</fx:Script>
+							<s:Label id="fileName" x="0"  fontSize="18"/>
+							<s:Label id="progress" x="180"  fontSize="18"/>
+						</s:ItemRenderer>
+					</fx:Component>
+				</s:itemRenderer>
+			</s:List>
+			<s:HGroup width="100%">
+				<s:VGroup width="50%">
+					<s:Button label="回放"/>
+				</s:VGroup>
+			</s:HGroup>
+		</s:VGroup>
+	</s:HGroup>
+</s:WindowedApplication>

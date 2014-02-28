@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   creationComplete="windowedapplication1_creationCompleteHandler(event)"
+					   width="800" height="600">
+	<fx:Declarations>
+		<s:DateTimeFormatter id="myDateFormatter">
+
+		</s:DateTimeFormatter>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.genesi.desktop.ScreenShooter;
+
+			import flash.utils.ByteArray;
+			import flash.utils.Timer;
+
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+
+			import org.bytearray.micrecorder.MicRecorder;
+			import org.bytearray.micrecorder.encoder.WaveEncoder;
+			import org.bytearray.micrecorder.events.RecordingEvent;
+
+			private var recording:Boolean=false;
+			private var timer:Timer;
+
+			private var s:ScreenShooter;
+
+			protected function takeScreenShot():void
+			{
+				if(recording){
+					if(timer)
+					{
+						timer.stop();
+						recorder.stop();
+						tsButton.mouseEnabled=false;
+					}
+					recording=false;
+				}else{
+					if(!timer)
+					{
+						timer=new Timer(500);
+						timer.addEventListener(TimerEvent.TIMER,onTimer);
+					}
+					username.editable=false;
+					inputText.text="用户名:  ";
+					var so:SharedObject=SharedObject.getLocal("lastUserName");
+					so.data["username"]=username.text;
+					so.flush()
+					tsButton.label="停止录制";
+					recorder.record();
+					timer.start();
+					recording=true;
+				}
+			}
+
+			protected function tsButton_clickHandler(event:MouseEvent):void
+			{
+				takeScreenShot();
+			}
+
+			private var mic:Microphone;
+
+			private function saveJPG(ba:ByteArray, _name:String):void
+			{
+				var file:File=File.desktopDirectory.resolvePath("screenshot/"+username.text +"/"+ _name + ".jpg");
+				var fs:FileStream=new FileStream();
+				try
+				{
+					fs.open(file, FileMode.WRITE);
+					fs.writeBytes(ba);
+					fs.close();
+				}
+				catch (e:Error)
+				{
+					trace(e.message);
+				}
+			}
+
+			protected function onTimer(event:TimerEvent):void
+			{
+				if(!s)
+					s = new ScreenShooter();
+				var ba:ByteArray = s.getScreenShot();
+				var date:Date=new Date();
+				saveJPG(ba,"shot"+date.getMinutes().toString()+date.getMilliseconds().toString())
+			}
+
+			private var recorder:MicRecorder;
+
+			protected function windowedapplication1_creationCompleteHandler(event:FlexEvent):void
+			{
+				//				var camera:Camera=Camera.getCamera();
+				//				if(camera)
+				//				{
+				//					camera.setMode(320,240,24);
+				//					var video:Video=new Video();
+				//					video.attachCamera(camera);
+				//					var ui:UIComponent=new UIComponent();
+				//					addElement(ui);
+				//					ui.addChild(video);
+				//				}
+
+				recorder=new MicRecorder( new WaveEncoder())
+				recorder.addEventListener(RecordingEvent.RECORDING, onRecording);
+				recorder.addEventListener(Event.COMPLETE, onRecordComplete);
+
+				var date:Date=new Date();
+				remotePath=date.getFullYear()+"/"+date.getMonth()+"/"+date.getDate()+"/"+date.getHours()+"/";
+			}
+
+			private function onRecording(event:RecordingEvent):void
+			{
+				micTxt.text = "录音中...";
+				trace(Microphone.getMicrophone().activityLevel)
+			}
+
+			private function onRecordComplete(event:Event):void
+			{
+				micTxt.text = "录音停止...";
+				var date:Date=new Date();
+				var d:String=date.getMinutes().toString()+date.getMilliseconds().toString()
+				var file:File=File.desktopDirectory.resolvePath("screenshot/"+username.text+"/sound"+d+".wav");
+
+				var fs:FileStream=new FileStream();
+				try
+				{
+					fs.open(file, FileMode.WRITE);
+					fs.writeBytes(recorder.output);
+					fs.close();
+				}catch (e:Error)
+				{
+					trace(e.message);
+				}
+
+				upFile=File.desktopDirectory.resolvePath("screenshot/"+username.text);
+				upFile.addEventListener(FileListEvent.SELECT_MULTIPLE,onFileSelected);
+				upFile.browseForOpenMultiple("选择文件");
+			}
+
+			private function upload(f:FileReference):void{
+				var u:URLRequest=new URLRequest('http://up.qiniu.com'); 
+				u.method=URLRequestMethod.POST;
+				u.requestHeaders=[new URLRequestHeader('enctype', 'multipart/form-data')];
+				var ur:URLVariables=new URLVariables();
+
+				ur.key=username.text+"/"+remotePath+f.name;
+				ur.token="-S31BNj77Ilqwk5IN85PIBoGg8qlbkqwULiraG0x:NdeCF0RrZDVBxBYvOlTRWzdLH5I=:eyJzY29wZSI6InVzZXJ0ZXN0IiwiZGVhZGxpbmUiOjE3NTI2OTM1MDh9"; //Only this is required
+				ur['x:param'] = 'Your custom param and value';
+
+				u.data=ur;
+
+				f.upload(u, 'file');  //File or FileReference is both OK, but UploadDataFieldName must be 'file'
+				f.addEventListener(ProgressEvent.PROGRESS,onProgress);
+				f.addEventListener(DataEvent.UPLOAD_COMPLETE_DATA, uploadedHandler);
+				f.addEventListener(IOErrorEvent.IO_ERROR,onIOError);
+			}
+
+			protected function uploadedHandler(event:DataEvent):void
+			{
+				fileCount++;
+				if(fileCount==arr.length)
+					micTxt.text="上传完成";
+				trace(event.data);  //{"hash":"File hash info","key":"Uploaded file name", "x:param":"Your custom param and value"}
+
+				var _name:String=File(event.currentTarget).name;
+				for (var i:int = 0; i < arr.length; i++) 
+				{
+					var o:Object=arr[i];
+					if(o["fileName"]==_name){
+						o["progress"]="上传完成";
+						arr[i]=o;
+						fileNames=new ArrayCollection(arr);
+						return;
+					}
+				}
+			}
+
+			protected function onProgress(event:ProgressEvent):void
+			{
+				showProgress(File(event.currentTarget).name,((event.bytesLoaded/event.bytesTotal)*100).toFixed(2)+"%");
+			}
+
+			private function showProgress(_name:String,progress:String):void{
+
+				for (var i:int = 0; i < arr.length; i++) 
+				{
+					var o:Object=arr[i];
+					if(o["fileName"]==_name){
+						o["progress"]=progress;
+						arr[i]=o;
+						fileNames=new ArrayCollection(arr);
+						return;
+					}
+				}
+			}
+
+			protected function onIOError(event:IOErrorEvent):void
+			{
+				trace("ioError:  "+event.errorID)
+			}
+
+			private function getLastUser():String
+			{
+				var so:SharedObject=SharedObject.getLocal("lastUserName");
+				if(so.data["username"]){
+					username.editable=false;
+					inputText.text="用户名:  ";
+					return so.data["username"];
+				}else{
+					var xml:XML=
+						<records>
+							<record name="aaa" />
+						</records>;
+					;
+					var file:File=File.applicationDirectory.resolvePath("config.xml");
+					var fileStream:FileStream = new FileStream();
+					fileStream.open(file, FileMode.WRITE);
+					var outputString:String = '<?xml version="1.0" encoding="utf-8"?>';
+					outputString += xml.toXMLString();
+					fileStream.writeUTFBytes(outputString);
+					fileStream.close();
+				}
+				return "";
+			}
+
+			private var upFile:File;
+			private var remotePath:String;
+			private var arr:Array;
+			private var fileCount:int=0;
+
+			protected function onFileSelected(event:FileListEvent):void
+			{
+				micTxt.text="上传中...";
+				fileCount=0;
+				arr=[];
+				for each (var file:FileReference in event.files) 
+				{
+					upload(file);
+					arr.push({"fileName":file.name,"progress":"0%"});
+				}
+				fileNames=new ArrayCollection(arr);
+			}
+
+			[Bindable]
+			private var fileNames:ArrayCollection;
+
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="registed"/>
+		<s:State name="unregisted"/>
+	</s:states>
+
+	<s:HGroup includeIn="unregisted">
+
+	</s:HGroup>
+
+	<s:VGroup gap="50" width="100%" top="10" bottom="0" horizontalAlign="center" id="main" includeIn="registed">
+		<s:HGroup>
+			<s:Label text="用户名:  " id="inputText"/>
+			<s:TextInput id="username" text="{getLastUser()}"/>
+		</s:HGroup>
+		<s:HGroup gap="50">
+			<s:Button id="tsButton" label="开始录制" click="tsButton_clickHandler(event)" buttonMode="true"
+					  visible="{username.text}"/>
+			<s:Label id="micTxt" width="200" height="60" fontSize="26" visible="{username.text}"/>
+		</s:HGroup>
+		<s:List id="fileList" labelField="文件" dataProvider="{fileNames}" width="90%" height="90%">
+			<s:itemRenderer>
+				<fx:Component>
+					<s:ItemRenderer>
+						<fx:Script>
+							<![CDATA[
+								override public function set data(value:Object):void{
+									fileName.text=value["fileName"];
+									progress.text=value["progress"];
+								}
+							]]>
+						</fx:Script>
+						<s:Label id="fileName" x="0" />
+						<s:Label id="progress" x="250" />
+					</s:ItemRenderer>
+				</fx:Component>
+			</s:itemRenderer>
+		</s:List>
+	</s:VGroup>
+
+</s:WindowedApplication>
